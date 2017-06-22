@@ -3,7 +3,7 @@ import unittest
 
 from pact import Consumer, Provider
 
-pact = Consumer('Consumer').has_pact_with(Provider('Provider'))
+pact = Consumer('Users Consumer').has_pact_with(Provider('Users Provider'), host_name='mockservice', port=9000)
 pact.start_service()
 atexit.register(pact.stop_service)
 
@@ -25,3 +25,4 @@ class GetUserInfoContract(unittest.TestCase):
             result = consumer.get_user('admin', 'http://localhost:1234')
 
         self.assertEqual(result, expected)
+        requests.put(uri, auth=('admin', 'Password123')).json()
