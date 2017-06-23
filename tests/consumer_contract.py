@@ -3,7 +3,7 @@ import unittest
 
 from pact import Consumer, Provider
 
-pact = Consumer('UsersConsumer').has_pact_with(Provider('UsersProvider'), port=8080)
+pact = Consumer('UsersConsumer').has_pact_with(Provider('UsersProvider'), port=1234)
 pact.start_service()
 atexit.register(pact.stop_service)
 
@@ -22,7 +22,7 @@ class GetUserInfoContract(unittest.TestCase):
          .will_respond_with(200, body=expected))
 
         with pact:
-            result = consumer.get_user('admin', 'http://localhost:1235')
+            result = consumer.get_user('admin', 'http://localhost:1234')
 
         self.assertEqual(result, expected)
-        #requests.put('http://192.168.99.100/pacts/provider/UsersProvider/consumer/UsersConsumer/latest', )
+        # requests.put('http://192.168.99.100/pacts/provider/UsersProvider/consumer/UsersConsumer/latest', )
