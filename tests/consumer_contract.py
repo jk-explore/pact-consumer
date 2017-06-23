@@ -25,4 +25,4 @@ class GetUserInfoContract(unittest.TestCase):
             result = consumer.get_user('admin', 'http://localhost:1234')
 
         self.assertEqual(result, expected)
-        requests.put(uri, auth=('admin', 'Password123')).json()
+        #requests.put('http://192.168.99.100/pacts/provider/UsersProvider/consumer/UsersConsumer/latest', )
