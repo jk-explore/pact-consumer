@@ -22,7 +22,7 @@ class GetUserInfoContract(unittest.TestCase):
          .will_respond_with(200, body=expected))
 
         with pact:
-            result = consumer.get_user('admin', 'http://localhost:1234')
+            result = consumer.get_user('admin', 'http://localhost:1235')
 
         self.assertEqual(result, expected)
         #requests.put('http://192.168.99.100/pacts/provider/UsersProvider/consumer/UsersConsumer/latest', )
