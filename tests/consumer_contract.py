@@ -3,7 +3,7 @@ import unittest
 
 from pact import Consumer, Provider
 
-pact = Consumer('Users Consumer').has_pact_with(Provider('Users Provider'), host_name='mockservice', port=9000)
+pact = Consumer('UsersConsumer').has_pact_with(Provider('UsersProvider'), host_name='mockservice', port=9000)
 pact.start_service()
 atexit.register(pact.stop_service)
 
